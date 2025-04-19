@@ -23,14 +23,14 @@ const ContactManager = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`/api/contact/${id}`);
-      setContacts(contacts.filter(contact => contact._id !== id));
-    } catch (err) {
-      setError('Failed to delete contact');
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await axios.delete(`/api/contact/${id}`);
+  //     setContacts(contacts.filter(contact => contact._id !== id));
+  //   } catch (err) {
+  //     setError('Failed to delete contact');
+  //   }
+  // };
 
   if (loading) return <div className="text-center py-8">Loading...</div>;
   if (error) return <div className="text-red-500 text-center py-8">{error}</div>;
