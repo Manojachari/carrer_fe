@@ -37,6 +37,9 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
+.home-page-contact-form input{
+  color: #2d3436 !important;
+}
 
 .home-page-form-group {
   margin-bottom: 1.5rem;
