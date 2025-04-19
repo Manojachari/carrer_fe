@@ -19,19 +19,24 @@ const AdminDashboard = () => {
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem('token');
-      if (!token || token !== 'admin-token') {
-        toast.error('Access denied. Please log in as admin.');
+      console.log('Token from localStorage:', token); // Debug token
+      if (!token) {
+        toast.error('No token found. Please log in.');
         navigate('/admin/login');
         return;
       }
 
       try {
-        const response = await api.get('/auth/me');
+        const response = await api.get('/auth/me', {
+          headers: { Authorization: `Bearer ${token}` }, // Ensure token is sent
+        });
+        console.log('Auth Response:', response.data); // Debug user data
         setUser(response.data);
         toast.success(`Welcome ${response.data.name}!`);
       } catch (error) {
+        console.error('Auth Error:', error.response?.data || error.message);
         localStorage.removeItem('token');
-        toast.error('Session expired. Please log in again.');
+        toast.error('Session expired or invalid. Please log in again.');
         navigate('/admin/login');
       } finally {
         setLoading(false);
@@ -43,6 +48,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    setUser(null); // Clear user state
     toast.info('Logged out successfully!');
     navigate('/admin/login');
   };
@@ -71,59 +77,60 @@ const AdminDashboard = () => {
   }
 
   console.log('Menu Open:', menuOpen); // Debug log
+  console.log('User:', user); // Debug user state
 
   return (
     <div className="min-h-screen bg-gray-100">
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar theme="colored" />
 
       {/* Responsive Admin Header */}
-      <header className="header">
+      <header className="admin-header">
         <div
-          className="logo"
+          className="admin-logo"
           onClick={() => navigate('/admin')}
           style={{ cursor: 'pointer' }}
         >
           Admin Dashboard
         </div>
         <button
-          className={`mobile-menu-toggle ${menuOpen ? 'open' : ''}`}
+          className={`admin-mobile-menu-toggle ${menuOpen ? 'admin-open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span className="hamburger"></span>
+          <span className="admin-hamburger"></span>
         </button>
-        <nav className={`nav-menu ${menuOpen ? 'open' : ''}`}>
+        <nav className={`admin-nav-menu ${menuOpen ? 'admin-open' : ''}`}>
           <button
             onClick={() => { setActiveTab('services'); setMenuOpen(false); }}
-            className={`nav-link ${activeTab === 'services' ? 'active' : ''}`}
+            className={`admin-nav-link ${activeTab === 'services' ? 'admin-active' : ''}`}
           >
             Services
           </button>
           <button
             onClick={() => { setActiveTab('testimonials'); setMenuOpen(false); }}
-            className={`nav-link ${activeTab === 'testimonials' ? 'active' : ''}`}
+            className={`admin-nav-link ${activeTab === 'testimonials' ? 'admin-active' : ''}`}
           >
             Testimonials
           </button>
           <button
             onClick={() => { setActiveTab('contact'); setMenuOpen(false); }}
-            className={`nav-link ${activeTab === 'contact' ? 'active' : ''}`}
+            className={`admin-nav-link ${activeTab === 'contact' ? 'admin-active' : ''}`}
           >
             Contact
           </button>
           <button
             onClick={() => { setActiveTab('gallery'); setMenuOpen(false); }}
-            className={`nav-link ${activeTab === 'gallery' ? 'active' : ''}`}
+            className={`admin-nav-link ${activeTab === 'gallery' ? 'admin-active' : ''}`}
           >
             Gallery
           </button>
           <button
             onClick={() => { handleLogout(); setMenuOpen(false); }}
-            className="nav-link logout"
+            className="admin-nav-link admin-logout"
           >
             Logout
           </button>
-          <span className="nav-user">Welcome, {user?.name}</span>
+          <span className="admin-nav-user">Welcome, {user?.name || 'Admin'}</span>
         </nav>
       </header>
 
@@ -137,4 +144,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard; 
+export default AdminDashboard;
