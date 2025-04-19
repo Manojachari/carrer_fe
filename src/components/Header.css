@@ -1,4 +1,4 @@
-.header {
+.home-page-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
   font-family: 'Arial', sans-serif;
 }
 
-.logo {
+.home-page-logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #00ffcc;
@@ -22,18 +22,18 @@
   transition: all 0.3s ease;
 }
 
-.logo:hover {
+.home-page-logo:hover {
   transform: scale(1.1) rotate(5deg);
   text-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc, 0 0 40px #00ffcc;
 }
 
-.nav-menu.large-screen {
+.home-page-nav-menu.home-page-large-screen {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
 }
 
-.nav-link {
+.home-page-nav-link {
   margin-left: 2rem;
   color: #ffffff;
   text-decoration: none;
@@ -45,7 +45,7 @@
   letter-spacing: 1px;
 }
 
-.nav-link::after {
+.home-page-nav-link::after {
   content: '';
   position: absolute;
   width: 0;
@@ -56,24 +56,24 @@
   transition: width 0.3s ease;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.home-page-nav-link:hover::after,
+.home-page-nav-link.home-page-active::after {
   width: 100%;
 }
 
-.nav-link:hover {
+.home-page-nav-link:hover {
   color: #00ffcc;
   text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
   transform: translateY(-2px);
 }
 
-.nav-link.active {
+.home-page-nav-link.home-page-active {
   color: #00ffcc;
   text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
 }
 
 /* Mobile Menu */
-.nav-menu.mobile {
+.home-page-nav-menu.home-page-mobile {
   display: none;
   flex-direction: column;
   position: absolute;
@@ -83,14 +83,14 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   padding: 1rem;
   border-radius: 0 0 8px 8px;
-  animation: slideDown 0.3s ease forwards;
+  animation: home-page-slideDown 0.3s ease forwards;
 }
 
-.nav-menu.mobile.open {
+.home-page-nav-menu.home-page-mobile.home-page-open {
   display: flex;
 }
 
-.mobile-menu-toggle {
+.home-page-mobile-menu-toggle {
   display: none;
   background: none;
   border: none;
@@ -101,7 +101,7 @@
   margin-right: 30px;
 }
 
-.hamburger {
+.home-page-hamburger {
   display: block;
   width: 25px;
   height: 3px;
@@ -111,8 +111,8 @@
   box-shadow: 0 0 10px #00ffcc;
 }
 
-.hamburger::before,
-.hamburger::after {
+.home-page-hamburger::before,
+.home-page-hamburger::after {
   content: '';
   position: absolute;
   width: 25px;
@@ -122,26 +122,26 @@
   box-shadow: 0 0 10px #00ffcc;
 }
 
-.hamburger::before {
+.home-page-hamburger::before {
   top: -8px;
 }
 
-.hamburger::after {
+.home-page-hamburger::after {
   top: 8px;
 }
 
-.mobile-menu-toggle.open .hamburger {
+.home-page-mobile-menu-toggle.home-page-open .home-page-hamburger {
   background: transparent;
   box-shadow: none;
 }
 
-.mobile-menu-toggle.open .hamburger::before {
+.home-page-mobile-menu-toggle.home-page-open .home-page-hamburger::before {
   transform: rotate(45deg);
   top: 0;
   box-shadow: 0 0 15px #00ffcc;
 }
 
-.mobile-menu-toggle.open .hamburger::after {
+.home-page-mobile-menu-toggle.home-page-open .home-page-hamburger::after {
   transform: rotate(-45deg);
   top: 0;
   box-shadow: 0 0 15px #00ffcc;
@@ -149,15 +149,15 @@
 
 /* Media Queries */
 @media (max-width: 768px) {
-  .mobile-menu-toggle {
+  .home-page-mobile-menu-toggle {
     display: block;
   }
 
-  .nav-menu.large-screen {
+  .home-page-nav-menu.home-page-large-screen {
     display: none !important;
   }
 
-  .nav-link {
+  .home-page-nav-link {
     margin: 0.5rem 0;
     font-size: 1.1rem;
     width: 100%;
@@ -166,30 +166,30 @@
 }
 
 @media (min-width: 769px) {
-  .nav-menu.mobile {
+  .home-page-nav-menu.home-page-mobile {
     display: none !important;
   }
 }
 
 @media (max-width: 480px) {
-  .header {
+  .home-page-header {
     padding: 1rem;
   }
 
-  .logo {
+  .home-page-logo {
     font-size: 1.2rem;
   }
 
-  .mobile-menu-toggle {
+  .home-page-mobile-menu-toggle {
     padding: 0.3rem;
   }
 
-  .hamburger, .hamburger::before, .hamburger::after {
+  .home-page-hamburger, .home-page-hamburger::before, .home-page-hamburger::after {
     width: 20px;
   }
 }
 
-@keyframes slideDown {
+@keyframes home-page-slideDown {
   from {
     opacity: 0;
     transform: translateY(-10px);

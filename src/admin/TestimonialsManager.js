@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { motion } from 'framer-motion';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './TestimonialsManager.css';
 
 const TestimonialsManager = () => {
@@ -44,13 +46,16 @@ const TestimonialsManager = () => {
     try {
       if (editingTestimonial) {
         await api.put(`/testimonials/${editingTestimonial._id}`, formData);
+        toast.success('Testimonial updated successfully!');
       } else {
         await api.post('/testimonials', formData);
+        toast.success('New testimonial added successfully!');
       }
       fetchTestimonials();
       resetForm();
     } catch (error) {
       console.error('Error saving testimonial:', error);
+      toast.error('Error saving testimonial. Please try again.');
     }
   };
 
@@ -73,6 +78,7 @@ const TestimonialsManager = () => {
         fetchTestimonials();
       } catch (error) {
         console.error('Error deleting testimonial:', error);
+        toast.error('Error deleting testimonial. Please try again.');
       }
     }
   };
@@ -94,9 +100,27 @@ const TestimonialsManager = () => {
   }
 
   return (
-    <div className="testimonials-manager">
-      <h2>{editingTestimonial ? 'Edit Testimonial' : 'Add New Testimonial'}</h2>
-      <form onSubmit={handleSubmit} className="testimonial-form">
+    <motion.div
+      className="testimonials-manager"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar theme="colored" />
+      <motion.h2
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
+        {editingTestimonial ? 'Edit Testimonial' : 'Add New Testimonial'}
+      </motion.h2>
+      <motion.form
+        onSubmit={handleSubmit}
+        className="testimonial-form"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      >
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input
@@ -173,15 +197,20 @@ const TestimonialsManager = () => {
             </button>
           )}
         </div>
-      </form>
+      </motion.form>
 
-      <div className="testimonials-grid">
+      <motion.div
+        className="testimonials-grid"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+      >
         {testimonials.map((testimonial) => (
           <motion.div
             key={testimonial._id}
             className="testimonial-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
             <div className="testimonial-header">
@@ -221,9 +250,9 @@ const TestimonialsManager = () => {
             </div>
           </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
-export default TestimonialsManager; 
+export default TestimonialsManager;

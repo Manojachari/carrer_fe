@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './Gallery.css';
+
 const Gallery = ({ items = [] }) => {
   const [isHovered, setIsHovered] = useState(false);
   const scrollRef = useRef(null);
@@ -12,7 +13,7 @@ const Gallery = ({ items = [] }) => {
     if (!scrollRef.current || animationRef.current) return;
 
     const scrollContainer = scrollRef.current;
-    const calculateCardWidth = () => scrollContainer.querySelector('.gallery-card')?.offsetWidth || 300;
+    const calculateCardWidth = () => scrollContainer.querySelector('.home-page-gallery-card')?.offsetWidth || 300;
     cardWidthRef.current = calculateCardWidth();
     let scrollPosition = 0;
     let lastTime = null;
@@ -69,28 +70,28 @@ const Gallery = ({ items = [] }) => {
   };
 
   return (
-    <section className="gallery-section">
-      <div className="gallery-container">
-        <h2 className="gallery-title">Our Gallery</h2>
+    <section className="home-page-gallery-section">
+      <div className="home-page-gallery-container">
+        <h2 className="home-page-gallery-title">Our Gallery</h2>
         <div
-          className="gallery-wrapper"
+          className="home-page-gallery-wrapper"
           ref={scrollRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="gallery-grid">
+          <div className="home-page-gallery-grid">
             {items.map((item) => (
               <div
                 key={item._id}
-                className="gallery-card"
+                className="home-page-gallery-card"
                 onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.15)')}
                 onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)')}
               >
-                <div className="card-media">
+                <div className="home-page-card-media">
                   {item.type === 'video' ? (
                     <video
                       src={item.url}
-                      className="media-content"
+                      className="home-page-media-content"
                       controls
                       poster={item.thumbnailUrl || ''}
                     />
@@ -98,11 +99,11 @@ const Gallery = ({ items = [] }) => {
                     <img
                       src={item.url}
                       alt={item.title}
-                      className="media-content"
+                      className="home-page-media-content"
                     />
                   )}
-                  <div className="card-overlay">
-                    <h3 className="card-title">{item.title}</h3>
+                  <div className="home-page-card-overlay">
+                    <h3 className="home-page-card-title">{item.title}</h3>
                   </div>
                 </div>
               </div>

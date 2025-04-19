@@ -5,7 +5,7 @@ const Testimonials = ({ testimonials = [] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const scrollInterval = useRef(null);
-  const itemsPerPage = 3;
+  const itemsPerPage = 4;
   const totalPages = Math.ceil(testimonials.length / itemsPerPage);
 
   const startAutoScroll = useCallback(() => {

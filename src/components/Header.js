@@ -28,12 +28,12 @@ const Header = () => {
 
   const navLinks = (
     <>
-      <ScrollLink to="hero" smooth duration={500} offset={-70} spy hashSpy className="nav-link" activeClass="active" onClick={() => setIsMobileMenuOpen(false)}>Home</ScrollLink>
-      <ScrollLink to="services" smooth duration={500} offset={-70} spy hashSpy className="nav-link" activeClass="active" onClick={() => setIsMobileMenuOpen(false)}>Services</ScrollLink>
-      <ScrollLink to="about" smooth duration={500} offset={-70} spy hashSpy className="nav-link" activeClass="active" onClick={() => setIsMobileMenuOpen(false)}>About</ScrollLink>
-      <ScrollLink to="gallery" smooth duration={500} offset={-70} spy hashSpy className="nav-link" activeClass="active" onClick={() => setIsMobileMenuOpen(false)}>Gallery</ScrollLink>
-      <ScrollLink to="contact" smooth duration={500} offset={-70} spy hashSpy className="nav-link" activeClass="active" onClick={() => setIsMobileMenuOpen(false)}>Contact</ScrollLink>
-      <ScrollLink to="testimonials" smooth duration={500} offset={-70} spy hashSpy className="nav-link" activeClass="active" onClick={() => setIsMobileMenuOpen(false)}>Testimonials</ScrollLink>
+      <ScrollLink to="hero" smooth duration={500} offset={-70} spy hashSpy className="home-page-nav-link" activeClass="home-page-active" onClick={() => setIsMobileMenuOpen(false)}>Home</ScrollLink>
+      <ScrollLink to="services" smooth duration={500} offset={-70} spy hashSpy className="home-page-nav-link" activeClass="home-page-active" onClick={() => setIsMobileMenuOpen(false)}>Services</ScrollLink>
+      <ScrollLink to="about" smooth duration={500} offset={-70} spy hashSpy className="home-page-nav-link" activeClass="home-page-active" onClick={() => setIsMobileMenuOpen(false)}>About</ScrollLink>
+      <ScrollLink to="gallery" smooth duration={500} offset={-70} spy hashSpy className="home-page-nav-link" activeClass="home-page-active" onClick={() => setIsMobileMenuOpen(false)}>Gallery</ScrollLink>
+      <ScrollLink to="contact" smooth duration={500} offset={-70} spy hashSpy className="home-page-nav-link" activeClass="home-page-active" onClick={() => setIsMobileMenuOpen(false)}>Contact</ScrollLink>
+      <ScrollLink to="testimonials" smooth duration={500} offset={-70} spy hashSpy className="home-page-nav-link" activeClass="home-page-active" onClick={() => setIsMobileMenuOpen(false)}>Testimonials</ScrollLink>
     </>
   );
 
@@ -42,10 +42,10 @@ const Header = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
-      className="header"
+      className="home-page-header"
     >
       <motion.div
-        className="logo"
+        className="home-page-logo"
         onClick={scrollToTop}
         whileHover={{ scale: 1.1, rotate: 5, transition: { duration: 0.3 } }}
       >
@@ -55,17 +55,17 @@ const Header = () => {
       {/* Toggle button for mobile */}
       {isMobile && (
         <button
-          className={`mobile-menu-toggle ${isMobileMenuOpen ? 'open' : ''}`}
+          className={`home-page-mobile-menu-toggle ${isMobileMenuOpen ? 'home-page-open' : ''}`}
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
-          <span className="hamburger"></span>
+          <span className="home-page-hamburger"></span>
         </button>
       )}
 
       {/* Mobile Dropdown Nav */}
       <motion.nav
-        className={`nav-menu mobile ${isMobileMenuOpen ? 'open' : ''}`}
+        className={`home-page-nav-menu home-page-mobile ${isMobileMenuOpen ? 'home-page-open' : ''}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
         transition={{ duration: 0.3 }}
@@ -74,7 +74,7 @@ const Header = () => {
       </motion.nav>
 
       {/* Large Screen Horizontal Nav */}
-      <nav className="nav-menu large-screen">
+      <nav className="home-page-nav-menu home-page-large-screen">
         {navLinks}
       </nav>
     </motion.header>

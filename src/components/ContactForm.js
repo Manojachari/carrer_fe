@@ -83,25 +83,25 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="contact-section">
+    <section className="home-page-contact-section">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="contact-container"
+        className="home-page-contact-container"
       >
         <h2>Get in Touch</h2>
-        <p className="contact-subtitle">Have questions? We'd love to hear from you.</p>
+        <p className="home-page-contact-subtitle">Have questions? We'd love to hear from you.</p>
 
         <motion.form
-          className="contact-form"
+          className="home-page-contact-form"
           onSubmit={handleSubmit}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="form-group">
+          <div className="home-page-form-group">
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -109,13 +109,13 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={errors.name ? 'error' : ''}
+              className={errors.name ? 'home-page-error' : ''}
               placeholder="Your name"
             />
-            {errors.name && <span className="error-message">{errors.name}</span>}
+            {errors.name && <span className="home-page-error-message">{errors.name}</span>}
           </div>
 
-          <div className="form-group">
+          <div className="home-page-form-group">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -123,13 +123,13 @@ const ContactForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={errors.email ? 'error' : ''}
+              className={errors.email ? 'home-page-error' : ''}
               placeholder="Your email"
             />
-            {errors.email && <span className="error-message">{errors.email}</span>}
+            {errors.email && <span className="home-page-error-message">{errors.email}</span>}
           </div>
 
-          <div className="form-group">
+          <div className="home-page-form-group">
             <label htmlFor="phone">Phone</label>
             <input
               type="tel"
@@ -137,35 +137,35 @@ const ContactForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className={errors.phone ? 'error' : ''}
+              className={errors.phone ? 'home-page-error' : ''}
               placeholder="Your phone number"
             />
-            {errors.phone && <span className="error-message">{errors.phone}</span>}
+            {errors.phone && <span className="home-page-error-message">{errors.phone}</span>}
           </div>
 
-          <div className="form-group">
+          <div className="home-page-form-group">
             <label htmlFor="message">Message</label>
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className={errors.message ? 'error' : ''}
+              className={errors.message ? 'home-page-error' : ''}
               placeholder="Your message"
               rows="5"
             />
-            {errors.message && <span className="error-message">{errors.message}</span>}
+            {errors.message && <span className="home-page-error-message">{errors.message}</span>}
           </div>
 
           <motion.button
             type="submit"
-            className="submit-btn"
+            className="home-page-submit-btn"
             disabled={status.loading}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             {status.loading ? (
-              <span className="loading-spinner"></span>
+              <span className="home-page-loading-spinner"></span>
             ) : (
               'Send Message'
             )}
@@ -173,7 +173,7 @@ const ContactForm = () => {
 
           {status.success && (
             <motion.div
-              className="status-message success"
+              className="home-page-status-message home-page-success"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >
@@ -183,7 +183,7 @@ const ContactForm = () => {
 
           {status.error && (
             <motion.div
-              className="status-message error"
+              className="home-page-status-message home-page-error"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >

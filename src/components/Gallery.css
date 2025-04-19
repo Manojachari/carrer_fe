@@ -1,15 +1,15 @@
-.gallery-section {
+.home-page-gallery-section {
   padding: 64px 0;
   background: linear-gradient(to bottom, #ffffff, #f0f4f8);
 }
 
-.gallery-container {
+.home-page-gallery-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
-.gallery-title {
+.home-page-gallery-title {
   font-size: 32px;
   font-weight: 700;
   text-align: center;
@@ -17,12 +17,12 @@
   color: #1a2a44;
 }
 
-.gallery-wrapper {
+.home-page-gallery-wrapper {
   position: relative;
   overflow: hidden;
 }
 
-.gallery-grid {
+.home-page-gallery-grid {
   display: flex;
   flex-wrap: nowrap;
   gap: 24px;
@@ -30,7 +30,7 @@
   width: 100%;
 }
 
-.gallery-card {
+.home-page-gallery-card {
   background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
@@ -39,14 +39,14 @@
   width: 33.33%; /* Approx 1/3 for 3 items per "page" */
 }
 
-.card-media {
+.home-page-card-media {
   position: relative;
   height: 0;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
   overflow: hidden;
 }
 
-.media-content {
+.home-page-media-content {
   position: absolute;
   top: 0;
   left: 0;
@@ -55,7 +55,7 @@
   object-fit: cover;
 }
 
-.card-overlay {
+.home-page-card-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -69,11 +69,11 @@
   transition: opacity 0.3s ease;
 }
 
-.gallery-card:hover .card-overlay {
+.home-page-gallery-card:hover .home-page-card-overlay {
   opacity: 1;
 }
 
-.card-title {
+.home-page-card-title {
   font-size: 18px;
   font-weight: 600;
   color: #ffffff;
@@ -82,13 +82,13 @@
 }
 
 @media (max-width: 1023px) {
-  .gallery-card {
+  .home-page-gallery-card {
     width: 50%; /* 2 cards on tablets */
   }
 }
 
 @media (max-width: 639px) {
-  .gallery-card {
+  .home-page-gallery-card {
     width: 100%; /* 1 card on mobile */
   }
 }
