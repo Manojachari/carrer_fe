@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import { motion } from 'framer-motion';
 import './Header.css';
+import CareerClues_logo from '../assests/CareerClues_logo-03.png';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -49,6 +50,7 @@ const Header = () => {
         onClick={scrollToTop}
         whileHover={{ scale: 1.1, rotate: 5, transition: { duration: 0.3 } }}
       >
+        <img src={CareerClues_logo} width={60} alt=''/>
         Career Clues
       </motion.div>
 

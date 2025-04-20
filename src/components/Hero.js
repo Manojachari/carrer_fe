@@ -28,7 +28,7 @@ const Hero = () => {
   return (
     <div className="hero-container" ref={heroRef}>
       <div className="hero-content">
-      <img src={carrer_clues} width={200}  />
+      <img src={carrer_clues} width={300} alt='' />
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
